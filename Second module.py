@@ -2,9 +2,10 @@
 import pandas as pd
 import smtplib
 import ssl
+
 from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
+from email.mime.text import MIMEText
 
 # Please fill data below with your email, password and email recipient
 email_from = ''
@@ -49,12 +50,12 @@ def attach_file_to_email(email_message, filename, extra_headers=None):
     email_message.attach(file_attachment)
 #
 
-# Below we have code to include today's date to use in topic of our mail, we can change order of
+# Code to include today's date to use in topic of our mail, we can change order of
 # printing information (day, month, year)
 
 date_str = pd.Timestamp.today().strftime('%d-%m-%Y')
 
-# Create a MIMEMultipart class, and sed up the From, To, Subject fields
+# Code to create class for sender, receiver and subject of the message
 email_message = MIMEMultipart()
 email_message['From'] = email_from
 email_message['To'] = email_to
